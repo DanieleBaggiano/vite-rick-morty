@@ -44,16 +44,20 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    width: 80%
-  }
+    margin: 0 100px;
 
-  .grid {
-    text-align: center;
-    width: calc(100% / 4 - 20px);
-  }
+    .grid {
+      text-align: center;
+      width: calc(100% / 4 - 20px);
+    }
 
-  img {
-    border-radius: 50%;
-    width: 200px;
+    img {
+      border-radius: 50%;
+      width: 200px;
+    }
+
+    h3 {
+      padding-bottom: 10px;
+    }
   }
 </style>
