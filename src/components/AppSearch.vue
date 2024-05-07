@@ -4,14 +4,15 @@ export default {
     data() {
         return {
             store,
+            status: ["Alive", "Dead", "Unknown"]
         }
     },
 }
 </script>
 
 <template>
-    <select>
-        <option v-for="item in store.cardsList" value="options">{{ item.status}}</option>
+    <select @change="$emit('filter')" v-model="store.selectedStatus">
+        <option v-for="item in status" :value="item">{{ item }}</option>
     </select>
 </template>
 

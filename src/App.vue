@@ -23,13 +23,25 @@
           // this.array = resp.data.results;
           // console.log(this.array);
         })
-    }
+    },
+    methods: {
+      getCards() {
+        console.log("Get cards", this.store.selectedStatus);
+        axios.get("https://rickandmortyapi.com/api/character", {
+          params: {
+            status: this.store.selectedStatus,
+          }
+        }).then((resp) => {
+          this.store.cardsList = resp.data.results;
+        })
+      }
+    },
   }
 </script>
 
 <template>
   <AppHeader />
-  <AppSearch />
+  <AppSearch @filter="getCards" />
 
   <!-- :array="array" -->
 
