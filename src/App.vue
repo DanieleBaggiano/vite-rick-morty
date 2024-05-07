@@ -1,24 +1,27 @@
 <script>
+  import { store } from "./store";
   import axios from "axios";
   import AppHeader from '/src/components/AppHeader.vue';
-  import AppMain from '/src/components/AppMain.vue';
+  import AppSearch from '/src/components/AppSearch.vue';
 
   export default {
     components: {
       AppHeader,
-      AppMain,
+      AppSearch,
     },
     data() {
       return {
-        array: []
+        store,
+        // array: []
       }
     },
     created() {
       axios
         .get("https://rickandmortyapi.com/api/character")
         .then((resp) => {
-          this.array = resp.data.results
-          console.log(this.array);
+          this.store.cardsList = resp.data.results;
+          // this.array = resp.data.results;
+          // console.log(this.array);
         })
     }
   }
@@ -26,10 +29,12 @@
 
 <template>
   <AppHeader />
-  <AppMain :array="array" />
+  <AppSearch />
+
+  <!-- :array="array" -->
 
   <div class="container">
-    <div class="grid" v-for="item in array">
+    <div class="grid" v-for="item in store.cardsList">
       <img :src="item.image" alt="">
       <h3>{{ item.name }}</h3>
       <span>{{ item.status }}</span> <br>
